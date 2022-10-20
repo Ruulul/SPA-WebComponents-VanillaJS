@@ -1,11 +1,5 @@
 import { intents } from "./sam/actions.mjs";
-import { render as home } from "./pages/home.mjs";
-import { render as about } from "./pages/about.mjs";
-
-const routes = {
-    home, 
-    about,
-};
+import routes from "./pages/index.mjs";
 
 export const view = {
     init() {
