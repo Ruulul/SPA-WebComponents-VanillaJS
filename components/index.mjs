@@ -3,7 +3,8 @@ import { intents } from "../sam/actions.mjs";
 class LinkComponent extends HTMLElement {
     constructor () {
         super();
-        this.onclick = ()=>intents.goto(this.attributes.page.value);
+        let page = this.attributes.page.value;
+        this.onclick = ()=>intents.goto(page);
     }
 }
 customElements.define('go-to', LinkComponent);
