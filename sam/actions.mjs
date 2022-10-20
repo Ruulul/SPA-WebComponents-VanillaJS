@@ -13,7 +13,7 @@ export const intents = {
     goto (page) {
         window.history.pushState({}, 
             page, 
-            window.location.origin + '?path='+page
+            '?path='+page
         );
         actions.goTo(page);
         actions.endNavigation();
