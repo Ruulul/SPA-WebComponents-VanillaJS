@@ -10,7 +10,8 @@ const routes = {
 export const view = {
     init() {
         for (let [intent, action] of Object.entries(intents)) window[intent] = action;
-        intents.goto('home');
+        let page = new URLSearchParams(window.location.search).get("path")
+        intents.goto(page || 'home');
         window.onpopstate = ()=>{
             let path = new URLSearchParams(window.location.search).get("path")
             intents.goto(path)
