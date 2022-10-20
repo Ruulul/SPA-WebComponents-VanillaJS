@@ -1,4 +1,14 @@
-function makeComponent (template_id) {
+import { intents } from "../sam/actions.mjs";
+
+class LinkComponent extends HTMLElement {
+    constructor () {
+        super();
+        this.onclick = ()=>intents.goto(this.attributes.page.value);
+    }
+}
+customElements.define('go-to', LinkComponent);
+
+function makeComponentFromTemplate (template_id) {
     return class extends HTMLElement {
         constructor () {
             super();
