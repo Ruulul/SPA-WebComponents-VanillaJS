@@ -7,7 +7,7 @@ export const state = {
             view.render(model);
         };
     },
-    nap ({is_navigating}) {
-        return is_navigating;
+    nap ({mutation}) {
+        return mutation;
     },
 }
