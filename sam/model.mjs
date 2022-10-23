@@ -1,7 +1,7 @@
 import { state } from "./state.mjs"
 
 export const model = {
-    page: 'home',
+    page: 'loading...',
     propose ({go_to}) {
         if (go_to) {
             if (go_to === this.page) return;
