@@ -4,6 +4,7 @@ export const model = {
     page: 'home',
     propose ({go_to}) {
         if (go_to) {
+            if (go_to === this.page) return;
             this.page = go_to;
         } else return;
 
