@@ -4,9 +4,6 @@ export const actions = {
     goTo (page) {
         model.propose({ go_to: page })
     },
-    endNavigation () {
-        model.propose({ end_navigation: true });
-    }
 }
 
 export const intents = {
@@ -16,6 +13,5 @@ export const intents = {
             '?path='+page
         );
         actions.goTo(page);
-        actions.endNavigation();
     },
 }

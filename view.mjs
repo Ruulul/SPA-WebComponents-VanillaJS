@@ -12,10 +12,11 @@ export const view = {
         }
     },
     render(model) {
-        let { title, content } = routes[model.page](model)
+        let { title, content, css } = routes[model.page](model)
 
         document.title = title;
         document.querySelector("h1").innerHTML = title;
         document.querySelector("main").innerHTML = content;
+        document.querySelector("style").innerHTML = [...css.rules].map(rule=>rule.cssText).join('\n');
     },
 }

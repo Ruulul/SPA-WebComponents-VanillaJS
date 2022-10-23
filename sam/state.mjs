@@ -7,7 +7,7 @@ export const state = {
             view.render(model);
         };
     },
-    nap ({mutation}) {
-        return mutation;
+    nap () {
+        return true;
     },
 }
