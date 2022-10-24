@@ -4,9 +4,7 @@ import css from './index.css' assert { type: "css" };
 let { posts } = index;
 for (let post of posts) {
     post.content = await fetch(
-        post.path.replace('.', 
-            import.meta.url.slice(0, import.meta.url.lastIndexOf('/')) //import.meta.url gives to us the path with the filename, so this slicing gives the dir
-        )
+        post.path.replace('.', 'pages/blog')
     ).then(r=>r.text());
 }
 export const render = ({path})=>{
