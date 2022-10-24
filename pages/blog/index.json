@@ -1,0 +1,12 @@
+{
+    "posts": [
+        {
+            "title": "post1",
+            "path": "./posts/post1"
+        },
+        {
+            "title": "post2",
+            "path": "./posts/post2"
+        }
+    ]
+}
