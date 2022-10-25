@@ -12,7 +12,9 @@ export const render = ({path})=>{
         case 'posts':
             content = `
             <ul>Blog posts:
-                ${posts.map(({path, title})=>`<go-to page=${'blog/' + path}><li>${title}</li></go-to>`).join('')}
+            ${posts.map(({path, title})=>
+                `<go-to page=${'blog/' + path}><li>${title}</li></go-to>`).join('')
+            }
             </ul>
             `;
             break;
