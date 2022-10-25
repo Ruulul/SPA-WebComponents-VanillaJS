@@ -24,7 +24,7 @@ export const render = ({path})=>{
             content+= `<br><go-to page=blog>Back to posts</go-to>`
     }
     return {
-        title: post.title || "Blog",
+        title: post?.title || "Blog",
         content,
         css
     }
