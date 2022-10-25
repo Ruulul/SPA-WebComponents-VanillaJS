@@ -17,6 +17,6 @@ export const view = {
         document.title = title;
         document.querySelector("h1").innerHTML = title;
         document.querySelector("main").innerHTML = content;
-        document.querySelector("style").innerHTML = [...css.rules].map(rule=>rule.cssText).join('\n');
+        document.querySelector("style").innerHTML = css;
     },
 }

@@ -1,5 +1,5 @@
-import index from './index.json' assert { type: "json" };
-import css from './index.css' assert { type: "css" };
+let index = await fetch('pages/blog/index.json').then(r=>r.json());
+let css = await fetch('pages/blog/index.css').then(r=>r.text());
 
 let { posts } = index;
 for (let post of posts) {

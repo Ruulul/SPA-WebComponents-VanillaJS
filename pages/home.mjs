@@ -1,4 +1,4 @@
-import css from "./home.css" assert { type: "css" };
+let css = await fetch('pages/home.css').then(r=>r.text());
 
 export const render = () => {
     return {
