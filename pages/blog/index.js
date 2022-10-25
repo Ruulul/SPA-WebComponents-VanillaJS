@@ -7,7 +7,7 @@ for (let post of posts) {
 }
 export const render = ({path})=>{
     let content;
-    let post = posts.find(p=>p.path === path).content;
+    let post = posts.find(p=>p.path === path);
     switch (path) {
         case '':
         case 'posts':
