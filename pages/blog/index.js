@@ -7,6 +7,7 @@ for (let post of posts) {
 }
 export const render = ({path})=>{
     let content;
+    let post = posts.find(p=>p.path === path).content;
     switch (path) {
         case '':
         case 'posts':
@@ -19,11 +20,11 @@ export const render = ({path})=>{
             `;
             break;
         default:
-            content = posts.find(p=>p.path === path).content;
+            content = post.content;
             content+= `<br><go-to page=blog>Back to posts</go-to>`
     }
     return {
-        title: "Blog",
+        title: post.title || "Blog",
         content,
         css
     }
