@@ -3,13 +3,15 @@ import { intents } from "../sam/actions.mjs";
 class LinkComponent extends HTMLElement {
     constructor () {
         super();
-        //let shadow = this.attachShadow({ mode: "open" });
+        let shadow = this.attachShadow({ mode: "open" });
         let page = this.attributes.page.value;
-        //let link = document.createElement("a");
-        //link.innerHTML = this.innerHTML;
-        //link.onclick = ()=>intents.goto(page);
-        //shadow.appendChild(link);
-        this.onclick = ()=>intents.goto(page);
+        let link = document.createElement("a");
+        link.innerHTML = this.innerHTML;
+        link.onclick = ()=>intents.goto(page);
+        link.style.textDecoration = 'underline';
+        link.style.color = 'var(--link-color, blue)';
+        link.style.cursor = 'pointer';
+        shadow.appendChild(link);
     }
 }
 customElements.define('go-to', LinkComponent);
