@@ -8,9 +8,6 @@ class LinkComponent extends HTMLElement {
         let link = document.createElement("a");
         link.innerHTML = this.innerHTML;
         link.onclick = ()=>intents.goto(page);
-        link.style.textDecoration = 'underline';
-        link.style.color = 'var(--link-color, blue)';
-        link.style.cursor = 'pointer';
         shadow.appendChild(link);
     }
 }
