@@ -1,42 +1,60 @@
 let css = await fetch('pages/pratt-parser/index.css').then(r=>r.text());
+import { parse, evalTree } from "./parser.mjs";
 
-export const render = ()=>{
+window.parser = {
+    parse,
+    evalTree,
+}
+
+export const render = ({data: {tree, stream}})=>{
+    console.log(`getting tree ${JSON.stringify(tree)}`);
     return {
         title: "Pratt Parser",
         content: `
         <div class=row>
             <div class=col-6>
-                <ul>
-                    <li>
-                        Symbol:     <span>+</span>
-                        Notation:   <span>Infix</span>
-                        Precedence: <span>0</span>
-                    </li>
-                    <li>
-                        Symbol:     <span>-</span>
-                        Notation:   <span>Infix</span>
-                        Precedence: <span>0</span>
-                    </li>
-                    <li>
-                        Symbol:     <span>*</span>
-                        Notation:   <span>Infix</span>
-                        Precedence: <span>10</span>
-                    </li>
-                    <li>
-                        Symbol:     <span>/</span>
-                        Notation:   <span>Infix</span>
-                        Precedence: <span>10</span>
-                    </li>
-                </ul>
+                Tree:
+                <div class=row>
+                    ${renderTree(tree)}
+                </div>
             </div>
             <div class=col-6>
-                <form onsubmit="parse();return false">
-                    <input>
-                    <input type=submit value=Parse>
-                </form>
+                ${inputStream(stream || '')}
+                <div class=row>
+                    = ${tree ? evalTree(tree) : 'Type something!'}
+                </div>
             </div>
         </div>
         `,
         css,
     }
+}
+
+function renderTree ({left, token, right} = {}) {
+    return `
+        <div class=row>
+            <div class="row center">
+                ${token}
+            </div>
+            <div class=col-6>
+                ${left ? renderTree(left) : ''}
+            </div>
+            <div class=col-6>
+                ${right ? renderTree(right) : ''}
+            </div>
+        </div>
+    `
+}
+
+function inputStream(stream) {
+    return `
+        <form onsubmit="
+            let stream = event.target.elements.stream.value;
+            push_data({ tree: parser.parse(stream.slice()), stream });
+            return false;
+        ">
+            <input name=stream value=${stream}>
+            <input type=submit value=Parse>
+        </form>
+    `
 }
