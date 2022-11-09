@@ -17,10 +17,7 @@ export const render = () => {
                     to offer stuff that we can already do with <a href=http://vanilla-js.com>VanillaJS</a>.
                     </span>
                 </p>
-                <p class=row>
-                    <a class=col-12 href=https://www.github.com/Ruulul/>Click here to see my GitHub</a>
-                    <go-to class=col-12 page=curriculum>Click here to check my CV</go-to>
-                </p>
+                
         `,
         css,
     }
