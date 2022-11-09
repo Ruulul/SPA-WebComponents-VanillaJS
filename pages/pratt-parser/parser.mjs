@@ -1,5 +1,5 @@
 export function parse (stream, _tokens, right_binding = 0) {
-    let tokens = _tokens ? _tokens : tokenize(stream);
+    let tokens = _tokens || tokenize(stream);
     let left = nud(tokens);
 
     while (binding(peekToken(tokens)) > right_binding) {
@@ -18,7 +18,7 @@ export function parse (stream, _tokens, right_binding = 0) {
 
     function led (left, tokens) {
         let token = nextToken(tokens);
-        let right = '^'.includes(token)
+        let right = isRightBinding(token)
             ? parse(undefined, tokens, binding(token) - 1)
             : parse(undefined, tokens, binding(token));
         return { left, token, right };
@@ -43,6 +43,13 @@ export function parse (stream, _tokens, right_binding = 0) {
             case '-':
                 return 10;
             default: return 0;
+        }
+    }
+
+    function isRightBinding (token) {
+        switch (token) {
+            case '^': return true;
+            default: return false;
         }
     }
 }
