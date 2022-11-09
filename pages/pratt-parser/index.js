@@ -47,13 +47,14 @@ function renderTree ({left, token, right} = {}) {
 }
 
 function inputStream(stream) {
+    console.log({stream})
     return `
         <form onsubmit="
             let stream = event.target.elements.stream.value;
-            push_data({ tree: parser.parse(stream.slice()), stream });
+            push_data({ tree: parser.parse(stream), stream });
             return false;
         ">
-            <input name=stream value=${stream}>
+            <input name=stream value="${stream}">
             <input type=submit value=Parse>
         </form>
     `
