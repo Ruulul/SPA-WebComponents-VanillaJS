@@ -7,7 +7,6 @@ window.parser = {
 }
 
 export const render = ({data: {tree, stream}})=>{
-    console.log(`getting tree ${JSON.stringify(tree)}`);
     return {
         title: "Pratt Parser",
         content: `
@@ -47,7 +46,6 @@ function renderTree ({left, token, right} = {}) {
 }
 
 function inputStream(stream) {
-    console.log({stream})
     return `
         <form onsubmit="
             let stream = event.target.elements.stream.value;
