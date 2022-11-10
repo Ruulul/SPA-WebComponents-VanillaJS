@@ -38,12 +38,12 @@ function renderTree ({left, token, right} = {}) {
                 ${(left||right)&&'<div class="vertical-line"></div>'||''}
             </div>
             ${left ? `
-            <div class="col-6 leaf">
+            <div class="col-6 col-s-6 col-xs-6 leaf">
                 <div class="horizontal-line left"></div>
                 ${renderTree(left)}
             </div>` : ''}
             ${right ? `
-            <div class="col-6 leaf">
+            <div class="col-6 col-s-6 col-xs-6 leaf">
                  <div class="horizontal-line right"></div>
                 ${renderTree(right)}
             </div>` : ''}
