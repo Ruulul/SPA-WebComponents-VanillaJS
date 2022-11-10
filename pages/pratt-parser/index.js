@@ -10,7 +10,7 @@ export const render = ({data: {tree, stream}})=>{
     return {
         title: "Pratt Parser",
         content: `
-        It does not has support for parenthesis yet, and you also need to put spaces around the operators, otherwise doesnt work. :P
+        It does not has support for parenthesis yet :P
         <div class=row>
             <div class=col-6>
                 Tree:
