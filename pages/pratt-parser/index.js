@@ -32,16 +32,21 @@ export const render = ({data: {tree, stream}})=>{
 
 function renderTree ({left, token, right} = {}) {
     return `
-        <div class=row>
-            <div class="row center">
+        <div class="row tree">
+            <div class="row center root">
                 ${token}
+                ${(left||right)&&'<div class="vertical-line"></div>'||''}
             </div>
-            <div class=col-6>
-                ${left ? renderTree(left) : ''}
-            </div>
-            <div class=col-6>
-                ${right ? renderTree(right) : ''}
-            </div>
+            ${left ? `
+            <div class="col-6 leaf">
+                <div class="horizontal-line left"></div>
+                ${renderTree(left)}
+            </div>` : ''}
+            ${right ? `
+            <div class="col-6 leaf">
+                 <div class="horizontal-line right"></div>
+                ${renderTree(right)}
+            </div>` : ''}
         </div>
     `
 }

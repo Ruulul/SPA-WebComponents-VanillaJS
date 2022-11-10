@@ -9,7 +9,25 @@ export function parse (stream, _tokens, right_binding = 0) {
     return left;
 
     function tokenize (stream) {
-        return stream.split(' ');
+        let tokens =
+        stream
+        .split('')
+
+        tokens
+        .map((token, index)=>
+            '+-*/^ '
+            .split('')
+            .map(symbol=>{
+                if (token.includes(symbol) && token.length > 1) {
+                    let split = token.split(symbol);
+                    split.slice(0, -1).map((token, i)=>{
+                        split.splice(split.indexOf(token, i + 1), 0, symbol)
+                    })
+                    tokens.splice(index, 1, split)
+                }
+            })
+        )
+        return tokens.filter(token=>token!==' ');
     }
 
     function nud (tokens) {

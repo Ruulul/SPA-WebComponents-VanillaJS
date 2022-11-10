@@ -2,3 +2,33 @@ ul {
     display: flex;
     flex-flow: column;
 }
+.root {
+    border-radius: 2em;
+    border: solid darkgreen;
+    width: fit-content;
+    padding: 1em;
+    margin: auto;
+}
+.root, .leaf {
+    position: relative;
+}
+.horizontal-line, .vertical-line {
+    position: absolute;
+}
+.horizontal-line {
+    border-bottom: solid black;
+    width: 50%;
+    height: 1px;
+}
+.right {
+    left: 0;
+}
+.left {
+    right: 0;
+}
+.vertical-line {
+    border-right: solid black;
+    height: 50%;
+    top: 100%;
+    left: 50%;
+}
