@@ -11,14 +11,14 @@ export function parse (stream, _tokens, right_binding = 0) {
     function tokenize (stream) {
         let tokens =
         stream
-        .split('')
+        .split(' ')
 
         tokens
         .map((token, index)=>
-            '+-*/^ '
+            '+-*/^'
             .split('')
             .map(symbol=>{
-                if (token.includes(symbol) && token.length > 1) {
+                if (token.includes(symbol)) {
                     let split = token.split(symbol);
                     split.slice(0, -1).map((token, i)=>{
                         split.splice(split.indexOf(token, i + 1), 0, symbol)
@@ -27,7 +27,8 @@ export function parse (stream, _tokens, right_binding = 0) {
                 }
             })
         )
-        return tokens.filter(token=>token!==' ');
+        console.log({tokens: JSON.stringify(tokens)})
+        return tokens.flat();
     }
 
     function nud (tokens) {
