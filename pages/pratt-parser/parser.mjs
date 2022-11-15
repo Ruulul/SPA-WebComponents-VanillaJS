@@ -8,27 +8,28 @@ export function parse (stream, _tokens, right_binding = 0) {
 
     return left;
 
-    function tokenize (stream) {
-        let tokens =
-        stream
-        .split(' ')
+    function tokenize (stream, _tokens) {
+        const symbols = '+-*/^'.split('')
+        let tokens = _tokens || 
+            stream
+            .split(' ')
 
-        tokens
-        .map((token, index)=>
-            '+-*/^'
-            .split('')
-            .map(symbol=>{
-                if (token.includes(symbol)) {
-                    let split = token.split(symbol);
-                    split.slice(0, -1).map((token, i)=>{
-                        split.splice(split.indexOf(token, i + 1), 0, symbol)
-                    })
-                    tokens.splice(index, 1, split)
-                }
-            })
-        )
+        for (let [i, token] of tokens.entries()) {
+            symbols
+                .map(symbol=>{
+                    if (token.includes(symbol)&&token.length>1) {
+                        let split = tokens[i].split(symbol)
+                        split.splice(1, 0, symbol)
+                        tokens.splice(i, 1, split)
+                    }
+                })
+            const cond = symbols.some(s=>tokens[i].includes(s))&&tokens[i].length>1
+            if (cond)
+            tokens[i] = tokenize(undefined, tokens[i])
+        }
+
         console.log({tokens: JSON.stringify(tokens)})
-        return tokens.flat();
+        return tokens.flat().filter(Boolean);
     }
 
     function nud (tokens) {
