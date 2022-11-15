@@ -28,7 +28,6 @@ export function parse (stream, _tokens, right_binding = 0) {
             tokens[i] = tokenize(undefined, tokens[i])
         }
 
-        console.log({tokens: JSON.stringify(tokens)})
         return tokens.flat().filter(Boolean);
     }
 
